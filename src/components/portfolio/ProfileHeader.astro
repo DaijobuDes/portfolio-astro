@@ -1,0 +1,72 @@
+---
+interface Props {
+    avatarSrc: string;
+    avatarAlt: string;
+    name: string;
+    subtitle: string;
+}
+
+const { avatarSrc, avatarAlt, name, subtitle } = Astro.props as Props;
+---
+
+<header class="profile">
+    <img class="avatar" src={avatarSrc} alt={avatarAlt} width="96" height="96" />
+    <div class="copy">
+        <h1>{name}</h1>
+        <p class="lead">{subtitle}</p>
+    </div>
+</header>
+
+<style>
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .avatar {
+        flex: 0 0 auto;
+        width: 96px;
+        height: 96px;
+        object-fit: cover;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .copy {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        line-height: 1.05;
+    }
+
+    .lead {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+        .profile {
+            align-items: flex-start;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 8vw, 2.5rem);
+        }
+    }
+</style>

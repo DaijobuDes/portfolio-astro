@@ -1,44 +1,49 @@
 ---
-import avatar from '../assets/256.png';
+import ProfileHeader from './portfolio/ProfileHeader.astro';
+import DetailList from './portfolio/DetailList.astro';
+import ActionLink from './portfolio/ActionLink.astro';
+
+const details = [
+    {
+        label: 'Focus',
+        value: 'Backend Development, Systems Performance, & Network Engineering',
+    },
+    {
+        label: 'Based in',
+        value: 'Cebu, Philippines',
+    },
+    {
+        label: 'Available for',
+        value: 'Full-time Opportunities (Remote / Hybrid (Cebu City))',
+    },
+];
 ---
 
 <div id="container">
     <main class="card" aria-label="Portfolio preview">
         <p class="eyebrow">Portfolio</p>
-        <div class="profile">
-            {/* src={avatar.src} */}
-            <img
-            class="avatar"
-                src="https://avatars.githubusercontent.com/u/38452446"
-                alt="Portrait placeholder"
-                width="96"
-                height="96"
-            />
-            <h1>Kate Aubrey Cellan</h1>
-        </div>
-        <p class="lead">
-            Software Developer &bull; Homelabber &bull; Hobbyist Security Researcher &bull;
-            Hardware Enthusiast &bull; IoT Tinkerer
-        </p>
-
-        <section class="details" aria-label="Profile details">
-            <div>
-                <span class="label">Focus</span>
-                <span class="value">Backend Development, Systems Performance, & Network Engineering</span>
-            </div>
-            <div>
-                <span class="label">Based in</span>
-                <span class="value">Cebu, Philippines</span>
-            </div>
-            <div>
-                <span class="label">Available for</span>
-                <span class="value">Full-time Opportunities (Remote / Hybrid (Cebu City))</span>
-            </div>
-        </section>
+        <ProfileHeader
+            avatarSrc="https://avatars.githubusercontent.com/u/38452446"
+            avatarAlt="Portrait of Kate Aubrey Cellan"
+            name="Kate Aubrey Cellan"
+            subtitle="Software Developer • Homelabber • Hobbyist Security Researcher • Hardware Enthusiast • IoT Tinkerer"
+        />
+        <DetailList items={details} />
 
         <div class="actions">
-            <a href="https://www.linkedin.com/in/kate-aubrey-cellan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/DaijobuDes" target="_blank" rel="noopener noreferrer" class="secondary">Github</a>
+            <ActionLink
+                href="https://www.linkedin.com/in/kate-aubrey-cellan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                label="LinkedIn"
+            />
+            <ActionLink
+                href="https://github.com/DaijobuDes"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="secondary"
+                label="Github"
+            />
         </div>
     </main>
 </div>
@@ -88,107 +93,10 @@ import avatar from '../assets/256.png';
         color: #93c5fd;
     }
 
-    h1 {
-        margin: 0;
-        font-size: clamp(2rem, 5vw, 3.25rem);
-        line-height: 1.05;
-    }
-
-    .profile {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-    }
-
-    .avatar {
-        flex: 0 0 auto;
-        width: 96px;
-        height: 96px;
-        object-fit: cover;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
-        background: rgba(255, 255, 255, 0.06);
-    }
-
-    .lead {
-        margin: 16px 0 0;
-        color: #cbd5e1;
-        font-size: 1.05rem;
-        line-height: 1.7;
-    }
-
-    .details {
-        display: grid;
-        gap: 16px;
-        margin-top: 28px;
-        padding-top: 24px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .details div {
-        display: grid;
-        gap: 4px;
-    }
-
-    .label {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #94a3b8;
-    }
-
-    .value {
-        font-size: 1rem;
-        color: #e2e8f0;
-    }
-
     .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
         margin-top: 28px;
-    }
-
-    .actions a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 18px;
-        border-radius: 999px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    }
-
-    .actions a:hover {
-        transform: translateY(-1px);
-    }
-
-    .actions a:first-child {
-        background: #f8fafc;
-        color: #0f172a;
-    }
-
-    .actions a.secondary {
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        color: #e2e8f0;
-        background: rgba(255, 255, 255, 0.04);
-    }
-
-    @media (max-width: 480px) {
-        .profile {
-            align-items: flex-start;
-        }
-
-        .avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 16px;
-        }
-
-        h1 {
-            font-size: clamp(1.8rem, 8vw, 2.5rem);
-        }
     }
 </style>

@@ -1,0 +1,49 @@
+---
+interface DetailItem {
+    label: string;
+    value: string;
+}
+
+interface Props {
+    items: DetailItem[];
+    ariaLabel?: string;
+}
+
+const { items, ariaLabel = 'Profile details' } = Astro.props as Props;
+---
+
+<section class="details" aria-label={ariaLabel}>
+    {items.map((item) => (
+        <div>
+            <span class="label">{item.label}</span>
+            <span class="value">{item.value}</span>
+        </div>
+    ))}
+</section>
+
+<style>
+    .details {
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .details div {
+        display: grid;
+        gap: 4px;
+    }
+
+    .label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #94a3b8;
+    }
+
+    .value {
+        font-size: 1rem;
+        color: #e2e8f0;
+    }
+</style>
